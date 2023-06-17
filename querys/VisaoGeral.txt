@@ -1,0 +1,28 @@
+tabelas utlizadas: Utilizador, UtilizadorGastos, Gastos, Receitas, Contas, Rendimentos
+falta adicionar o campo IdConta á tabela Gastos para relacionar e fazer as contas de subtrair
+
+SELECT        SUM(Gastos.Quantia) - SUM(Receitas.Quantia) AS total
+FROM            Contas INNER JOIN
+                         Rendimentos ON Contas.IdConta = Rendimentos.IdConta CROSS JOIN
+                         Receitas CROSS JOIN
+                         Utilizador INNER JOIN
+                         UtilizadorGastos ON Utilizador.Idutilizador = UtilizadorGastos.IdUtilizador INNER JOIN
+                         Gastos ON UtilizadorGastos.IdGasto = Gastos.IdGasto
+WHERE        (Utilizador.Idutilizador = @a)
+
+
+
+novas alterações- ainda incompleto, as tabelas são: Utilizador, UtilizadorGastos, Gastos, contas, 
+						    UtilizadorReceitas, receitas
+						    UtilizadorRendimentos, rendimentos
+
+SELECT        Gastos.Quantia
+FROM            Utilizador INNER JOIN
+                         UtilizadorGastos ON Utilizador.Idutilizador = UtilizadorGastos.IdUtilizador INNER JOIN
+                         Gastos ON UtilizadorGastos.IdGasto = Gastos.IdGasto INNER JOIN
+                         Contas ON Gastos.IdConta = Contas.IdConta INNER JOIN
+                         UtilizadorReceitas ON Utilizador.Idutilizador = UtilizadorReceitas.Idutilizador INNER JOIN
+                         Receitas ON UtilizadorReceitas.Idreceitas = Receitas.Idreceita INNER JOIN
+                         UtilizadorRendimentos ON Utilizador.Idutilizador = UtilizadorRendimentos.IdUtilizador INNER JOIN
+                         Rendimentos ON UtilizadorRendimentos.IdUtilizador = Rendimentos.Idrendimento
+

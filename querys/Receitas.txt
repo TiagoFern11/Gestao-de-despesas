@@ -1,0 +1,5 @@
+SELECT        Receitas.Quantia, Receitas.DescReceita, UtilizadorReceitas.Data
+FROM            Utilizador INNER JOIN
+                         UtilizadorReceitas ON Utilizador.Idutilizador = UtilizadorReceitas.Idutilizador INNER JOIN
+                         Receitas ON UtilizadorReceitas.Idreceitas = Receitas.Idreceita
+WHERE        (Utilizador.Idutilizador = @a)

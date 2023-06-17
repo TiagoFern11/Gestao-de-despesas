@@ -1,0 +1,14 @@
+//query das despesas completa, utiliza as tabelas: Categorias, CatSub, SubCategorias, Gastos, UtilizadorGastos, Utilizador
+Aqui está a assumir que o utilizador é o 1
+
+SELECT        Gastos.Lugar, Gastos.Quantia, SubCategorias.Subcategorias, Categorias.Categoria, UtilizadorGastos.Data
+FROM            Gastos INNER JOIN
+                         UtilizadorGastos ON Gastos.IdGasto = UtilizadorGastos.IdGasto INNER JOIN
+                         Utilizador ON Utilizador.Idutilizador = UtilizadorGastos.IdUtilizador INNER JOIN
+                         SubCategorias ON Gastos.IdSubCategoria = SubCategorias.IdSubCategorias INNER JOIN
+                         CatSub ON SubCategorias.IdSubCategorias = CatSub.Idsubcategoria INNER JOIN
+                         Categorias ON CatSub.IdCategoria = Categorias.IdCategoria
+WHERE        (Utilizador.Idutilizador = 1)
+
+para escolher qual id quero
+WHERE        (Utilizador.Idutilizador = @idusr)

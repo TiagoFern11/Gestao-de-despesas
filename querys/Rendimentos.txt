@@ -1,0 +1,9 @@
+// tabelas utilizadas: Utilizador, UtilizadorRendimentos, Rendimentos, TipoRendimentos, Contas
+
+SELECT        TipoRendimentos.TipoRendimento, Contas.Conta, UtilizadorRendimentos.Data, Rendimentos.Quantia
+FROM            Utilizador INNER JOIN
+                         UtilizadorRendimentos ON Utilizador.Idutilizador = UtilizadorRendimentos.IdUtilizador INNER JOIN
+                         Rendimentos ON UtilizadorRendimentos.IdRendimento = Rendimentos.Idrendimento INNER JOIN
+                         Contas ON Rendimentos.IdConta = Contas.IdConta INNER JOIN
+                         TipoRendimentos ON Rendimentos.IdTipoRendimento = TipoRendimentos.IdTipoRendimento
+WHERE        (Utilizador.Idutilizador = @a)
